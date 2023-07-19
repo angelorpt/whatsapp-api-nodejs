@@ -1,4 +1,3 @@
-/* eslint-disable no-unsafe-optional-chaining */
 const QRCode = require('qrcode')
 const pino = require('pino')
 const {
@@ -60,13 +59,21 @@ class WhatsAppInstance {
 
     async SendWebhook(type, body, key) {
         if (!this.allowWebhook) return
-        this.axiosInstance
-            .post('', {
-                type,
-                body,
-                instanceKey: key,
-            })
-            .catch(() => {})
+        const bodyAxios = {
+            instanceKey: key,
+            type,
+            body,
+        }
+        console.log(
+            '🚀 ~ file: instance.js:68 ~ WhatsAppInstance ~ SendWebhook ~ bodyAxios:',
+            bodyAxios
+        )
+        this.axiosInstance.post('', bodyAxios).catch((error) => {
+            console.log(
+                '🚀 ~ file: instance.js:73 ~ WhatsAppInstance ~ SendWebhook ~ error:',
+                error
+            )
+        })
     }
 
     async init() {

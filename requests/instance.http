@@ -1,0 +1,30 @@
+@baseUrl = http://localhost:3333
+@key = angelodev
+@key2 = angelodev
+
+### Init Instance
+GET {{baseUrl}}/instance/init?key={{key}}&token=RANDOM_STRING_HERE
+
+### Init Instance
+GET {{baseUrl}}/instance/init?token=RANDOM_STRING_HERE
+
+### Scan QR
+GET {{baseUrl}}/instance/qr?key={{key}}
+
+### Get QR Code in Base 64
+GET {{baseUrl}}/instance/qrbase64?key={{key}}
+
+### Instance Info
+GET {{baseUrl}}/instance/info?key={{key2}}
+
+### Restore All Instances
+GET {{baseUrl}}/instance/restore
+
+### List All Instances
+GET {{baseUrl}}/instance/list
+
+### Delete Instance
+DELETE {{baseUrl}}/instance/delete?key={{key}}
+
+### Logout Instance
+DELETE {{baseUrl}}/instance/logout?key={{key}}

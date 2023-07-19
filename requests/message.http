@@ -1,0 +1,84 @@
+@baseUrl = http://localhost:3333
+@key = angelodev
+@key2 = angelo
+
+### Send Text Message
+POST {{baseUrl}}/message/text?key=angelodev
+Content-Type: application/json
+
+{
+  "id": "559281339678",
+  "message": "Bom dia, como podemos ajuda-lo?"
+}
+
+### Send Image Message
+
+POST {{baseUrl}}/message/image?key={{key}}
+
+### Send Button(Template) Message
+
+POST {{baseUrl}}/message/button?key={{key}}
+Content-Type: application/json
+
+{
+  "id": "559281339678",
+  "btndata": {
+      "text": "title Head",
+      "buttons": [
+          {
+              "type": "replyButton",
+              "title": "Reply this text (REPLY)"
+          },
+          {
+              "type": "urlButton",
+              "title": "Click me (URL)",
+              "payload": "https://google.com"
+          },
+          {
+              "type": "callButton",
+              "title": "Click to call (CALL)",
+              "payload": "918788889688"
+          }
+      ],
+      "footerText": "title footer"
+  }
+}
+
+
+### Set Status
+
+PUT {{baseUrl}}/message/setstatus?key={{key}}
+Content-Type: application/json
+
+{
+"status": "unavailable"
+}
+
+
+
+### Send Button With Media
+
+POST {{baseUrl}}/message/MediaButton?key={{key}}
+Content-Type: application/json
+
+{
+  "id": "559281339678:25@s.whatsapp.net",
+  "btndata": {
+    "text": "Title of Message",
+    "buttons": [
+      {
+        "type": "replyButton",
+        "title": "this button reply"
+      },
+      {
+        "type": "callButton",
+        "title": "this button calls",
+        "payload": "91999999999"
+      }
+    ],
+    "footerText": "Footer text",
+    "image": "https://picsum.photos/536/354",
+    "mediaType": "image",
+    "mimeType": "image/jpeg"
+  }
+}
